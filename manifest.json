@@ -1,7 +1,7 @@
 {
   "name": "IronLog",
   "short_name": "IronLog",
-  "start_url": "/ironlog/",
+  "start_url": "/ironlog/ironlog.html",
   "display": "standalone",
   "background_color": "#0A0A0A",
   "theme_color": "#0A0A0A",

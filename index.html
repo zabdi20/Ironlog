@@ -33,10 +33,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .tb-actions{display:flex;gap:8px}
 .icon-btn{background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer;padding:6px;border-radius:8px;display:flex;align-items:center}
 /* CONTENT */
-.content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,20px) + 16px)}
+.content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:calc(var(--nav-h) + var(--sb) + 16px)}
 /* BOTTOM NAV */
-.bnav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);display:flex;flex-direction:column;z-index:100;padding-bottom:env(safe-area-inset-bottom,20px)}
-.bnav-inner{display:flex;width:100%;height:var(--nav-h)}
+.bnav{position:fixed;bottom:0;left:0;right:0;height:calc(var(--nav-h) + var(--sb));padding-bottom:var(--sb);background:var(--surface);border-top:1px solid var(--border);display:flex;z-index:100;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 .nb{flex:1;background:none;border:none;color:var(--text3);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 0;transition:color .15s;font-family:'DM Sans',sans-serif}
 .nb.active{color:var(--accent)}
 .nb svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -208,16 +207,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 // ===========================
 // VERSION & CHANGELOG
 // ===========================
-const APP_VERSION = '1.6';
+const APP_VERSION = '1.5';
 const APP_BUILD_DATE = '2026-03-22';
 const CHANGELOG = [
-  {
-    version: '1.6',
-    date: '2026-03-22',
-    changes: [
-      'Fixed bottom nav bar — icons now sit flush against the very bottom of the iPhone screen with no black gap',
-    ]
-  },
   {
     version: '1.5',
     date: '2026-03-22',
@@ -875,16 +867,13 @@ const render = () => {
   // Bottom nav
   const bnav = document.createElement('nav');
   bnav.className = 'bnav';
-  const bnavInner = document.createElement('div');
-  bnavInner.className = 'bnav-inner';
   const tabs = [
     {id:'week',label:'Week',icon:`<polyline points="3 9 12 2 21 9"/><polyline points="9 22 9 12 15 12 15 22"/><rect x="3" y="9" width="18" height="13" rx="1"/>`},
     {id:'library',label:'Library',icon:`<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>`},
     {id:'progress',label:'Progress',icon:`<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>`},
     {id:'settings',label:'Settings',icon:`<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>`}
   ];
-  bnavInner.innerHTML = tabs.map(t=>`<button class="nb ${NAV.tab===t.id?'active':''}" data-tab="${t.id}"><svg viewBox="0 0 24 24">${t.icon}</svg><span>${t.label}</span></button>`).join('');
-  bnav.appendChild(bnavInner);
+  bnav.innerHTML = tabs.map(t=>`<button class="nb ${NAV.tab===t.id?'active':''}" data-tab="${t.id}"><svg viewBox="0 0 24 24">${t.icon}</svg><span>${t.label}</span></button>`).join('');
   app.appendChild(bnav);
 
   // Modal

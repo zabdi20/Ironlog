@@ -210,9 +210,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 // ===========================
 // VERSION & CHANGELOG
 // ===========================
-const APP_VERSION = '1.5';
-const APP_BUILD_DATE = '2026-03-22';
+const APP_VERSION = '1.6';
+const APP_BUILD_DATE = '2026-03-30';
 const CHANGELOG = [
+  {
+    version: '1.6',
+    date: '2026-03-30',
+    changes: [
+      'Added Recomp Standard plan — research-backed 4-day Mon/Wed/Fri/Sat split (14-16 chest sets/week)',
+      'Added Recomp Chest Focus plan — 4-day split with 28 chest sets/week across all four sessions',
+      'Both plans pre-loaded with starting weights based on your current strength levels',
+      'Load either plan via the ⚡ Splits button on the Week screen',
+    ]
+  },
   {
     version: '1.5',
     date: '2026-03-22',
@@ -488,6 +498,91 @@ const PRESET_SPLITS = [
       ]},
     ],
     days:[0,-1,1,-1,0,-1,-1]
+  },
+  {
+    name:'Recomp Standard — Mon/Wed/Fri/Sat',
+    templates:[
+      {name:'Push A — Heavy Chest',exs:[
+        {id:'smith-bench',sets:[{r:7,w:135},{r:7,w:135},{r:7,w:135},{r:7,w:135}]},
+        {id:'incline-db-press',sets:[{r:10,w:40},{r:10,w:40},{r:10,w:40}]},
+        {id:'cable-fly',sets:[{r:12,w:25},{r:12,w:25}]},
+        {id:'tricep-pushdown',sets:[{r:12,w:50},{r:12,w:50},{r:12,w:50}]},
+        {id:'overhead-tricep-ext',sets:[{r:12,w:30},{r:12,w:30},{r:12,w:30}]},
+      ]},
+      {name:'Pull A — Back & Biceps + Core',exs:[
+        {id:'lat-pulldown',sets:[{r:10,w:100},{r:10,w:100},{r:10,w:100},{r:10,w:100}]},
+        {id:'seated-cable-row',sets:[{r:10,w:100},{r:10,w:100},{r:10,w:100},{r:10,w:100}]},
+        {id:'db-row',sets:[{r:10,w:50},{r:10,w:50},{r:10,w:50}]},
+        {id:'face-pull',sets:[{r:15,w:40},{r:15,w:40},{r:15,w:40}]},
+        {id:'barbell-curl',sets:[{r:10,w:65},{r:10,w:65},{r:10,w:65},{r:10,w:65}]},
+        {id:'hammer-curl',sets:[{r:12,w:30},{r:12,w:30},{r:12,w:30}]},
+        {id:'cable-crunch',sets:[{r:15,w:50},{r:15,w:50},{r:15,w:50}]},
+        {id:'hanging-leg-raise',sets:[{r:12,w:0},{r:12,w:0},{r:12,w:0}]},
+      ]},
+      {name:'Push B — Chest Volume & Shoulders',exs:[
+        {id:'db-bench',sets:[{r:10,w:50},{r:10,w:50},{r:10,w:50},{r:10,w:50}]},
+        {id:'low-cable-fly',sets:[{r:12,w:25},{r:12,w:25},{r:12,w:25}]},
+        {id:'machine-shoulder-press',sets:[{r:10,w:90},{r:10,w:90},{r:10,w:90},{r:10,w:90}]},
+        {id:'cable-lateral-raise',sets:[{r:12,w:15},{r:12,w:15},{r:12,w:15},{r:12,w:15}]},
+        {id:'rear-delt-fly',sets:[{r:12,w:20},{r:12,w:20},{r:12,w:20}]},
+        {id:'rope-pushdown',sets:[{r:12,w:40},{r:12,w:40},{r:12,w:40}]},
+        {id:'tricep-kickback',sets:[{r:12,w:20},{r:12,w:20},{r:12,w:20}]},
+      ]},
+      {name:'Lower — Maintenance + Core',exs:[
+        {id:'leg-press',sets:[{r:10,w:180},{r:10,w:180},{r:10,w:180}]},
+        {id:'rdl',sets:[{r:10,w:115},{r:10,w:115},{r:10,w:115}]},
+        {id:'leg-extension',sets:[{r:12,w:90},{r:12,w:90}]},
+        {id:'leg-curl',sets:[{r:12,w:90},{r:12,w:90}]},
+        {id:'standing-calf-raise',sets:[{r:15,w:120},{r:15,w:120},{r:15,w:120}]},
+        {id:'russian-twist',sets:[{r:20,w:0},{r:20,w:0}]},
+        {id:'plank',sets:[{r:45,w:0},{r:45,w:0}]},
+      ]},
+    ],
+    days:[0,-1,1,-1,2,3,-1]
+  },
+  {
+    name:'Recomp Chest Focus — Mon/Wed/Fri/Sat',
+    templates:[
+      {name:'Push A — Heavy Chest',exs:[
+        {id:'smith-bench',sets:[{r:7,w:135},{r:7,w:135},{r:7,w:135},{r:7,w:135}]},
+        {id:'incline-db-press',sets:[{r:8,w:45},{r:8,w:45},{r:8,w:45},{r:8,w:45}]},
+        {id:'tricep-pushdown',sets:[{r:12,w:50},{r:12,w:50},{r:12,w:50}]},
+        {id:'overhead-tricep-ext',sets:[{r:12,w:30},{r:12,w:30},{r:12,w:30}]},
+      ]},
+      {name:'Pull A + Chest Finisher + Core',exs:[
+        {id:'lat-pulldown',sets:[{r:10,w:100},{r:10,w:100},{r:10,w:100},{r:10,w:100}]},
+        {id:'seated-cable-row',sets:[{r:10,w:100},{r:10,w:100},{r:10,w:100}]},
+        {id:'db-row',sets:[{r:10,w:50},{r:10,w:50},{r:10,w:50}]},
+        {id:'face-pull',sets:[{r:15,w:40},{r:15,w:40}]},
+        {id:'barbell-curl',sets:[{r:10,w:65},{r:10,w:65},{r:10,w:65},{r:10,w:65}]},
+        {id:'hammer-curl',sets:[{r:12,w:30},{r:12,w:30},{r:12,w:30}]},
+        {id:'cable-fly',sets:[{r:12,w:25},{r:12,w:25},{r:12,w:25}]},
+        {id:'db-fly',sets:[{r:12,w:25},{r:12,w:25},{r:12,w:25}]},
+        {id:'cable-crunch',sets:[{r:15,w:50},{r:15,w:50},{r:15,w:50}]},
+        {id:'hanging-leg-raise',sets:[{r:12,w:0},{r:12,w:0}]},
+      ]},
+      {name:'Push B — Volume Chest & Shoulders',exs:[
+        {id:'db-bench',sets:[{r:10,w:50},{r:10,w:50},{r:10,w:50},{r:10,w:50}]},
+        {id:'low-cable-fly',sets:[{r:12,w:25},{r:12,w:25},{r:12,w:25},{r:12,w:25}]},
+        {id:'machine-shoulder-press',sets:[{r:10,w:90},{r:10,w:90},{r:10,w:90},{r:10,w:90}]},
+        {id:'cable-lateral-raise',sets:[{r:12,w:15},{r:12,w:15},{r:12,w:15},{r:12,w:15}]},
+        {id:'rear-delt-fly',sets:[{r:12,w:20},{r:12,w:20},{r:12,w:20}]},
+        {id:'rope-pushdown',sets:[{r:12,w:40},{r:12,w:40},{r:12,w:40}]},
+        {id:'tricep-kickback',sets:[{r:12,w:20},{r:12,w:20}]},
+      ]},
+      {name:'Lower + Chest Finisher + Core',exs:[
+        {id:'leg-press',sets:[{r:10,w:180},{r:10,w:180},{r:10,w:180}]},
+        {id:'rdl',sets:[{r:10,w:115},{r:10,w:115},{r:10,w:115}]},
+        {id:'leg-extension',sets:[{r:12,w:90},{r:12,w:90}]},
+        {id:'leg-curl',sets:[{r:12,w:90},{r:12,w:90}]},
+        {id:'standing-calf-raise',sets:[{r:15,w:120},{r:15,w:120},{r:15,w:120}]},
+        {id:'incline-db-fly',sets:[{r:12,w:25},{r:12,w:25},{r:12,w:25}]},
+        {id:'chest-press-machine',sets:[{r:12,w:90},{r:12,w:90},{r:12,w:90}]},
+        {id:'russian-twist',sets:[{r:20,w:0},{r:20,w:0}]},
+        {id:'plank',sets:[{r:45,w:0},{r:45,w:0}]},
+      ]},
+    ],
+    days:[0,-1,1,-1,2,3,-1]
   }
 ];
 
